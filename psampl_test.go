@@ -2,10 +2,10 @@ package psampl_test
 
 import (
 	"math"
+	"math/big"
 	"math/rand"
 	"psampl"
 	"testing"
-	"math/big"
 )
 
 const (

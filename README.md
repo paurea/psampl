@@ -1,16 +1,16 @@
 # psampl go package
 Package to generate biased random numbers.
 Random numbers are taken from a source, which can be a pseudo-number generator
-like the one implemented by math/rand or a secure crypto source like the one of crypto/rand
+like the one implemented by math/rand or a secure crypto source like the one of crypto/rand.
 Once a distribution is set up by NewDistrib, samplers can be created (BiasSource), each associated with
 a random number generator source. BiasSource is safe for concurrent use by multiple goroutines given
-that the source of random numbers is itself safe.
+that the source of random numbers used to create the Distrib is safe.
 # Algorithm
 The algorithm used is [Vose's alias method] (https://web.archive.org/web/20131029203736/http://web.eecs.utk.edu/~vose/Publications/random.pdf) which is O(1) in generation time and O(1) in its use of input random numbers, but which has a setup time and memory of O(N) where N is the number of possible values for the samples.
 
     get github.com/paurea/psampl
 
-```text
+```go
     import "github.com/paurea/psampl"
 ```
 ## Usage

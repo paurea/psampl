@@ -191,23 +191,20 @@ func (d *Distrib) NewPrngSampl(seed int64) *BiasSource {
 	return bs
 }
 
-
-
 type BiasBitSource struct {
-	prOne	float64
-	rsrc        *rand.Rand
+	prOne float64
+	rsrc  *rand.Rand
 }
 
 // NewBiasBitSource creates a source from which to sample biased bits.
 // with the probability of getting one being prOne.
 func NewBiasBitSource(prOne float64, rsrc *rand.Rand) *BiasBitSource {
 	bbs := &BiasBitSource{
-		prOne:           prOne,
-		rsrc:        rsrc,
+		prOne: prOne,
+		rsrc:  rsrc,
 	}
 	return bbs
 }
-
 
 // SampleBit returns one sample from BiasBitSource, encoded as an bool.
 func (bbs *BiasBitSource) SampleBit() bool {
@@ -224,7 +221,7 @@ func boolTouint(b bool) uint {
 
 // Read fills p with packed samples of BiasBitSource.
 func (bbs *BiasBitSource) Read(p []byte) (n int, err error) {
-	for i := range(p) {
+	for i := range p {
 		for j := uint(0); j < 8; j++ {
 			bit := biasCoin(bbs.prOne, bbs.rsrc)
 			b := boolTouint(bit)

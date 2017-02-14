@@ -1,22 +1,21 @@
 package psampl_test
 
-
 import (
-	"psampl"
-	"log"
 	"fmt"
-	"math/rand"
+	"log"
 	"math/big"
+	"math/rand"
+	"psampl"
 )
 
 const (
-	nSamples = 5
+	nSamples      = 5
 	nTotBytesRead = 16
-	nBitsSample = 10
-	nValsSample = 1 <<(nBitsSample - 1)
-	nBytesSample = 2	//could be calculated from above
-	nCoins = 10
-	prHead = 0.1
+	nBitsSample   = 10
+	nValsSample   = 1 << (nBitsSample - 1)
+	nBytesSample  = 2 //could be calculated from above
+	nCoins        = 10
+	prHead        = 0.1
 
 	seedPrng = 7
 )
@@ -78,7 +77,7 @@ func Example_PrngRead() {
 		log.Fatal("read failed")
 	}
 	// We have nValsSample possible values, may not fit in one byte.
-	for i := 0; i < n; i+= nBytesSample {
+	for i := 0; i < n; i += nBytesSample {
 		n := uint(0)
 		for j := 0; j < nBytesSample; j++ {
 			n |= uint(samples[uint(i)+nBytesSample-uint(j)-1]) << uint(8*j)
