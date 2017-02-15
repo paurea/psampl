@@ -11,7 +11,7 @@ The algorithm used is [Vose's alias method] (https://web.archive.org/web/2013102
     get github.com/paurea/psampl
 
 ```
-    import "github.com/paurea/psampl"
+import "github.com/paurea/psampl"
 ```
 ## Usage
 
