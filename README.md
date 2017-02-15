@@ -10,14 +10,14 @@ The algorithm used is [Vose's alias method] (https://web.archive.org/web/2013102
 
     get github.com/paurea/psampl
 
-```go
+```
     import "github.com/paurea/psampl"
 ```
 ## Usage
 
 #### type BiasBitSource
 
-```go
+```
 type BiasBitSource struct {
 }
 ```
@@ -25,7 +25,7 @@ type BiasBitSource struct {
 
 #### func  NewBiasBitSource
 
-```go
+```
 func NewBiasBitSource(prOne float64, rsrc *rand.Rand) *BiasBitSource
 ```
 NewBiasBitSource creates a source from which to sample biased bits. with the
@@ -33,21 +33,21 @@ probability of getting one being prOne.
 
 #### func (*BiasBitSource) Read
 
-```go
+```
 func (bbs *BiasBitSource) Read(p []byte) (n int, err error)
 ```
 Read fills p with packed samples of BiasBitSource.
 
 #### func (*BiasBitSource) SampleBit
 
-```go
+```
 func (bbs *BiasBitSource) SampleBit() bool
 ```
 SampleBit returns one sample from BiasBitSource, encoded as an bool.
 
 #### type BiasSource
 
-```go
+```
 type BiasSource struct {
 }
 ```
@@ -55,7 +55,7 @@ type BiasSource struct {
 
 #### func (*BiasSource) Read
 
-```go
+```
 func (bs *BiasSource) Read(p []byte) (n int, err error)
 ```
 Read fills p with packed samples in big endian. Each sample is at least one byte
@@ -64,14 +64,14 @@ each sample)
 
 #### func (*BiasSource) SampleInt
 
-```go
+```
 func (bs *BiasSource) SampleInt() (num int)
 ```
 SampleInt returns one sample from BiasSource, encoded as an int.
 
 #### type Distrib
 
-```go
+```
 type Distrib struct {
 }
 ```
@@ -81,7 +81,7 @@ biased sources with that probability distribution
 
 #### func  NewDistrib
 
-```go
+```
 func NewDistrib(prob []float64) (d *Distrib, err error)
 ```
 NewDistrib returns a Distrib given an array of probabilities representing the
@@ -89,7 +89,7 @@ discrete probability distribution function (i.e. the histogram).
 
 #### func (*Distrib) NewBiasSource
 
-```go
+```
 func (d *Distrib) NewBiasSource(rsrc *rand.Rand) *BiasSource
 ```
 NewBiasSource biases a random source (expected to be uniformly distributed)
@@ -97,7 +97,7 @@ using Distrib and creates BiasSource which can be used to obtain samples.
 
 #### func (*Distrib) NewCryptoSampl
 
-```go
+```
 func (d *Distrib) NewCryptoSampl() *BiasSource
 ```
 NewCryptoSampl is a helper function which creates a BiasSource out of Distrib
@@ -105,7 +105,7 @@ with a secure number generator as origin of the input samples.
 
 #### func (*Distrib) NewPrngSampl
 
-```go
+```
 func (d *Distrib) NewPrngSampl(seed int64) *BiasSource
 ```
 NewPrngSampl is a helper function which creates a sampler by Distrib with the
