@@ -8,7 +8,7 @@ that the source of random numbers used to create the Distrib is safe.
 # Algorithm
 The algorithm used is [Vose's alias method] (https://web.archive.org/web/20131029203736/http://web.eecs.utk.edu/~vose/Publications/random.pdf) which is O(1) in generation time and O(1) in its use of input random numbers, but which has a setup time and memory of O(N) where N is the number of possible values for the samples.
 
-    get github.com/paurea/psampl
+    go get github.com/paurea/psampl
 
 ```
 import "github.com/paurea/psampl"
